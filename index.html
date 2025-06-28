@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <title>Galería de Videos</title>
+</head>
+<body>
+    <h1>Videos en Bucket</h1>
+    {% if videos %}
+        {% for video in videos %}
+            <video width="320" height="240" controls>
+                <source src="{{ video }}" type="video/mp4" />
+                Tu navegador no soporta video.
+            </video>
+            <br />
+        {% endfor %}
+    {% else %}
+        <p>No hay videos disponibles.</p>
+    {% endif %}
+</body>
+</html>
