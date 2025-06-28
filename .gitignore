@@ -1,1 +1,4 @@
 venv/
+gcloud-key.json
+__pycache__/
+*.pyc
