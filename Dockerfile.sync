@@ -1,0 +1,20 @@
+FROM python:3.10-slim
+
+# Instala utilidades necesarias
+RUN apt-get update && apt-get install -y \
+    curl gnupg ca-certificates unzip \
+    && apt-get clean
+
+# Instala gsutil (Google Cloud SDK)
+RUN curl https://sdk.cloud.google.com | bash -s -- --disable-prompts
+ENV PATH="/root/google-cloud-sdk/bin:${PATH}"
+
+# Instala dependencias de Python
+COPY requirements_sync.txt .
+RUN pip install --no-cache-dir -r requirements_sync.txt
+
+# Copia el script
+COPY sync_youtube_to_bucket_sync.py .
+
+# Comando por defecto
+CMD ["python", "sync_youtube_to_bucket_sync.py"]
