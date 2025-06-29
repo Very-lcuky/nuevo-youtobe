@@ -1,20 +1,27 @@
 FROM python:3.10-slim
 
-# Instala utilidades necesarias
+# Instala herramientas necesarias
 RUN apt-get update && apt-get install -y \
-    curl gnupg ca-certificates unzip \
-    && apt-get clean
+    curl gnupg ca-certificates unzip ffmpeg && apt-get clean
 
-# Instala gsutil (Google Cloud SDK)
-RUN curl https://sdk.cloud.google.com | bash -s -- --disable-prompts
+# Instala Google Cloud SDK (para gsutil)
+RUN echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] http://packages.cloud.google.com/apt cloud-sdk main" | tee -a /etc/apt/sources.list.d/google-cloud-sdk.list \
+    && curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key --keyring /usr/share/keyrings/cloud.google.gpg add - \
+    && apt-get update && apt-get install -y google-cloud-sdk
+
+# Añade gsutil al PATH
 ENV PATH="/root/google-cloud-sdk/bin:${PATH}"
 
-# Instala dependencias de Python
+# Copia e instala dependencias
 COPY requirements_sync.txt .
 RUN pip install --no-cache-dir -r requirements_sync.txt
 
-# Copia el script
+# Copia el script principal
 COPY sync_youtube_to_bucket_sync.py .
 
-# Comando por defecto
+# Copia el archivo de cookies
+COPY cookies.txt /app/cookies.txt
+
+# Ejecuta el script
 CMD ["python", "sync_youtube_to_bucket_sync.py"]
+
