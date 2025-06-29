@@ -2,10 +2,12 @@ import os
 import subprocess
 import glob
 
-# Manejar autenticación con Google Cloud desde variable de entorno (JSON en texto)
-if "GOOGLE_APPLICATION_CREDENTIALS" in os.environ:
+# Si la variable de entorno GOOGLE_APPLICATION_CREDENTIALS contiene JSON, guardarlo en archivo
+cred_json = os.environ.get("GOOGLE_APPLICATION_CREDENTIALS_JSON")
+
+if cred_json:
     with open("gcloud-key.json", "w") as f:
-        f.write(os.environ["GOOGLE_APPLICATION_CREDENTIALS"])
+        f.write(cred_json)
     os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "gcloud-key.json"
 
 # Configuración
@@ -23,15 +25,14 @@ subprocess.run([
     "yt-dlp", CANAL_URL,
     "--download-archive", "descargados.txt",
     "--output", "%(title)s.%(ext)s"
-])
+], check=True)
 
-# Buscar todos los videos con extensión mp4 o MP4 (insensible)
+# Buscar videos mp4 o mp4 (insensible)
 videos = glob.glob("*.mp4") + glob.glob("*.MP4")
 
 print("☁️ Subiendo videos al bucket...")
 
 for video in videos:
-    # Renombrar extensión a minúscula si hace falta
     base, ext = os.path.splitext(video)
     ext_lower = ext.lower()
     if ext != ext_lower:
@@ -42,7 +43,7 @@ for video in videos:
 
     destino = f"gs://{BUCKET_NAME}/{RUTA_BUCKET}{video}"
     print(f"  ⬆️  {video} → {destino}")
-    subprocess.run(["gsutil", "cp", video, destino])
+    subprocess.run(["gsutil", "cp", video, destino], check=True)
 
 print("✅ Proceso completo.")
 
