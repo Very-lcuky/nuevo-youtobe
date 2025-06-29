@@ -1,6 +1,5 @@
 FROM python:3.10-slim
 
-# Instala herramientas necesarias
 RUN apt-get update && apt-get install -y \
     curl gnupg ca-certificates unzip ffmpeg && apt-get clean
 
@@ -12,16 +11,13 @@ RUN echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] http://packages.c
 # Añade gsutil al PATH
 ENV PATH="/root/google-cloud-sdk/bin:${PATH}"
 
-# Copia e instala dependencias
 COPY requirements_sync.txt .
 RUN pip install --no-cache-dir -r requirements_sync.txt
 
-# Copia el script principal
 COPY sync_youtube_to_bucket_sync.py .
 
-# Copia el archivo de cookies
-COPY cookies.txt /app/cookies.txt
+# Línea para copiar cookies.txt eliminada porque no existe
+# COPY cookies.txt /app/cookies.txt
 
-# Ejecuta el script
 CMD ["python", "sync_youtube_to_bucket_sync.py"]
 
