@@ -1,19 +1,35 @@
 steps:
   - name: 'gcr.io/cloud-builders/docker'
     args:
-      ['build', '-t', 'us-central1-docker.pkg.dev/useful-memory-464107-d6/my-repo/yt-sync', '.']
+      [
+        'build',
+        '-t',
+        'gcr.io/useful-memory-464107-d6/nuevo-youtobe',
+        '.'
+      ]
   - name: 'gcr.io/cloud-builders/docker'
     args:
-      ['push', 'us-central1-docker.pkg.dev/useful-memory-464107-d6/my-repo/yt-sync']
+      [
+        'push',
+        'gcr.io/useful-memory-464107-d6/nuevo-youtobe'
+      ]
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
     entrypoint: gcloud
     args:
-      ['run', 'deploy', 'yt-sync',
-       '--image', 'us-central1-docker.pkg.dev/useful-memory-464107-d6/my-repo/yt-sync',
-       '--region', 'us-central1',
-       '--platform', 'managed',
-       '--allow-unauthenticated',
-       '--port', '8080']
+      [
+        'run',
+        'deploy',
+        'nuevo-youtobe',
+        '--image',
+        'gcr.io/useful-memory-464107-d6/nuevo-youtobe',
+        '--region',
+        'europe-west1',
+        '--platform',
+        'managed',
+        '--allow-unauthenticated',
+        '--port',
+        '8080'
+      ]
 images:
-  - 'us-central1-docker.pkg.dev/useful-memory-464107-d6/my-repo/yt-sync'
+  - 'gcr.io/useful-memory-464107-d6/nuevo-youtobe'
 
