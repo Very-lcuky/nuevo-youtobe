@@ -31,3 +31,4 @@ jobs:
             --region europe-southwest1 \
             --platform managed \
             --allow-unauthenticated
+
