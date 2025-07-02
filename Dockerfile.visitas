@@ -1,0 +1,18 @@
+# Usa imagen oficial de Python
+FROM python:3.12-slim
+
+# Crear directorio de trabajo
+WORKDIR /app
+
+# Instalar dependencias incluyendo gunicorn
+RUN pip install --no-cache-dir flask requests gunicorn
+
+# Copiar el script Python
+COPY visitas.py .
+
+# Expone el puerto que usa Flask (y debe escuchar gunicorn)
+EXPOSE 8080
+
+# Ejecutar la app con gunicorn, indicando módulo y variable de app
+CMD ["gunicorn", "--bind", "0.0.0.0:8080", "visitas:app"]
+
