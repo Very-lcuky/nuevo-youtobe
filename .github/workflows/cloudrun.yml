@@ -1,0 +1,43 @@
+name: Deploy to Google Cloud Run
+
+on:
+  push:
+    branches:
+      - main  # Puedes cambiar esto a cualquier otra rama que quieras usar para despliegues.
+
+env:
+  PROJECT_ID: useful-memory-464107-d6  # Tu ID de proyecto en Google Cloud
+  SERVICE_NAME: youtube-bot  # Nombre del servicio que tendrá tu aplicación
+  REGION: europe-west1  # Región para Cloud Run
+  IMAGE_NAME: gcr.io/$PROJECT_ID/youtube-bot  # Nombre de la imagen Docker
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Set up Google Cloud SDK
+        uses: google-github-actions/setup-gcloud@v1
+        with:
+          project_id: ${{ env.PROJECT_ID }}
+          service_account_key: ${{ secrets.GCP_SA_KEY }}  # Usa el secret de la cuenta de servicio
+          export_default_credentials: true
+
+      - name: Build Docker image
+        run: |
+          docker build -f Dockerfile.youtube_bot -t $IMAGE_NAME .
+
+      - name: Push Docker image to Google Container Registry
+        run: |
+          docker push $IMAGE_NAME
+
+      - name: Deploy to Cloud Run
+        run: |
+          gcloud run deploy $SERVICE_NAME \
+            --image $IMAGE_NAME \
+            --region ${{ env.REGION }} \
+            --platform managed \
+            --allow-unauthenticated
