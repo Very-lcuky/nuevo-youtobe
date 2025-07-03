@@ -1,0 +1,19 @@
+# Dockerfile.views
+
+# Usa imagen oficial de Python 3.12 slim
+FROM python:3.12-slim
+
+# Establece el directorio de trabajo
+WORKDIR /app
+
+# Copia requirements.txt para instalar dependencias
+COPY requirements.txt .
+
+# Instala las dependencias necesarias
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copia el script views.py
+COPY views.py .
+
+# Ejecuta el script views.py cuando corra el contenedor
+CMD ["python", "views.py"]
