@@ -1,3 +1,5 @@
+# Dockerfile modificado
+
 # Usa imagen oficial de Python
 FROM python:3.12-slim
 
@@ -30,12 +32,19 @@ RUN curl -sSL https://dl.google.com/linux/linux_signing_key.pub | apt-key add - 
     echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google-chrome.list && \
     apt-get update && apt-get install -y google-chrome-stable
 
-# Copia requirements si tienes (opcional), o instala paquetes directamente
-RUN pip install --no-cache-dir selenium yt-dlp webdriver-manager
+# Instala dependencias de Python
+RUN pip install --no-cache-dir selenium yt-dlp webdriver-manager flask gunicorn
+
+# Copia el archivo de cookies al contenedor
+COPY cookies.txt /app/cookies.txt
 
 # Copia el script a la imagen
 COPY youtube_canal_views.py /app/youtube_canal_views.py
 WORKDIR /app
 
-# Comando para ejecutar el script
-CMD ["python", "youtube_canal_views.py"]
+# Expone el puerto 8080 para Cloud Run
+EXPOSE 8080
+
+# Usa Gunicorn para ejecutar la aplicación en producción
+CMD ["gunicorn", "-b", "0.0.0.0:8080", "youtube_canal_views:app"]
+
