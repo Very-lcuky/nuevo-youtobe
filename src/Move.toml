@@ -1,0 +1,7 @@
+[package]
+name = "marisolvrs"
+version = "0.1.0"
+
+[dependencies]
+iota = { local = "./iota" }
+

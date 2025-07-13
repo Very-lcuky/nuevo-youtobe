@@ -1,0 +1,26 @@
+dotenv: .env
+
+wallets:
+  from_key: ${PRIVATE_KEY}
+
+networks:
+  base-mainnet:
+    host: ${RPC_URL}
+    chainid: 8453
+
+  mainnet-google:
+    host: ${RPC_URL_GOOGLE}
+    chainid: 1
+
+  development:
+    host: http://127.0.0.1:8545
+    chainid: 1337
+
+dependencies:
+  - OpenZeppelin/openzeppelin-contracts@4.9.3
+
+compiler:
+  solc:
+    remappings:
+      - '@openzeppelin=OpenZeppelin/openzeppelin-contracts@4.9.3'
+

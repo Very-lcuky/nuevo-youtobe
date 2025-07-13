@@ -1,0 +1,11 @@
+createMVRS(
+    "MiToken",           // _name
+    "MTK",               // _symbol
+    1000000 * 1e18,      // _initialSupply (1 millón tokens con 18 decimales)
+    1000000000 * 1e18,   // _maxSupply (1 billón tokens)
+    20000 * 1e18,        // _maxWalletLimit (ejemplo, 20k tokens max por wallet)
+    marketingWalletAddr, // dirección wallet para marketing fees
+    liquidityWalletAddr, // dirección wallet para liquidez
+    200,                 // marketingFee 2%
+    300                  // liquidityFee 3%
+)

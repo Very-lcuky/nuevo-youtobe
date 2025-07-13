@@ -1,0 +1,44 @@
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.20;
+
+import "./AdvancedERC20.sol";
+
+contract TokenFactory {
+    address[] public allTokens;
+
+    event TokenCreated(address indexed tokenAddress, address owner);
+
+    /// @notice Crea un nuevo token tipo AdvancedERC20
+    /// @param _initialSupply Suministro inicial (en wei)
+    /// @param _maxWalletLimit Límite máximo por wallet (en wei)
+    /// @param _marketingWallet Dirección para marketing
+    /// @param _liquidityWallet Dirección para liquidez
+    /// @param _marketingFee Fee de marketing (base 10000, ej. 200 = 2%)
+    /// @param _liquidityFee Fee de liquidez (base 10000, ej. 300 = 3%)
+    function createMVRS(
+        uint256 _initialSupply,
+        uint256 _maxWalletLimit,
+        address _marketingWallet,
+        address _liquidityWallet,
+        uint256 _marketingFee,
+        uint256 _liquidityFee
+    ) external {
+        AdvancedERC20 token = new AdvancedERC20(
+            _initialSupply,
+            _maxWalletLimit,
+            msg.sender,           // el owner será quien llama al factory
+            _marketingWallet,
+            _liquidityWallet,
+            _marketingFee,
+            _liquidityFee
+        );
+
+        allTokens.push(address(token));
+        emit TokenCreated(address(token), msg.sender);
+    }
+
+    /// @notice Devuelve todos los contratos de token creados
+    function getAllTokens() external view returns (address[] memory) {
+        return allTokens;
+    }
+}

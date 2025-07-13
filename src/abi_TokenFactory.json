@@ -1,0 +1,91 @@
+[
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_initialSupply",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_maxWalletLimit",
+				"type": "uint256"
+			},
+			{
+				"internalType": "address",
+				"name": "_marketingWallet",
+				"type": "address"
+			},
+			{
+				"internalType": "address",
+				"name": "_liquidityWallet",
+				"type": "address"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_marketingFee",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_liquidityFee",
+				"type": "uint256"
+			}
+		],
+		"name": "createMVRS",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "tokenAddress",
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"internalType": "address",
+				"name": "owner",
+				"type": "address"
+			}
+		],
+		"name": "TokenCreated",
+		"type": "event"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"name": "allTokens",
+		"outputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "getAllTokens",
+		"outputs": [
+			{
+				"internalType": "address[]",
+				"name": "",
+				"type": "address[]"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	}
+]
