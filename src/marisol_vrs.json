@@ -1,0 +1,26 @@
+{
+  "name": "Marisol VR Video NFT",
+  "description": "NFT asociado a un video de YouTube del canal de Marisol VR.",
+  "image": "https://bafybeia3zyjw5z3zbkbd4simwd7bh73uwwunncwazc3xn4p6m5n2adrefy.ipfs.dweb.link?filename=marisolvrs.jpg",
+  "youtube_url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ", 
+  "channel_url": "https://www.youtube.com/@marisol_vrs",
+  "license": {
+    "type": "CC-BY", 
+    "url": "https://creativecommons.org/licenses/by/4.0/",
+    "description": "Se permite compartir y adaptar el contenido, siempre que se dé el crédito adecuado."
+  },
+  "attributes": [
+    {
+      "trait_type": "Categoria",
+      "value": "Realidad Virtual"
+    },
+    {
+      "trait_type": "Duración",
+      "value": "12 minutos"
+    },
+    {
+      "trait_type": "Canal",
+      "value": "Marisol VR"
+    }
+  ]
+}
