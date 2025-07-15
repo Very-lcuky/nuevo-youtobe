@@ -1,0 +1,20 @@
++{
+  "name": "Marisol VRS - Canal Oficial",
+  "description": "Bienvenidos al canal oficial de Marisol VRS, donde compartimos contenido sobre viajes, paisajes y cultura en Galicia.",
+  "channel_url": "https://www.youtube.com/@marisol_vrs",
+  "thumbnail": "https://yt3.ggpht.com/a/AGF-l7-mKJ6XFFn2wL2VjPwf3tY0bqRJ-DmIB2-g1R7NiA=s900-c-k-c0x00ffffff-no-rj",
+  "license": "Creative Commons Attribution 4.0 International (CC BY 4.0)",
+  "author_rights": {
+    "owner": "Marisol VRS",
+    "rights": "Todos los derechos reservados. Uso bajo licencia.",
+    "terms": "Este contenido está protegido por derechos de autor. Se permite su uso comercial bajo la condición de que se dé el crédito adecuado al autor. No se permite la modificación ni la redistribución sin autorización previa del titular de los derechos."
+  },
+  "tags": ["Viajes", "Galicia", "Paisajes", "Cultura", "Aventura", "Documentales"],
+  "category": "Viajes y Cultura",
+  "created_at": "2025-07-15",
+  "updated_at": "2025-07-15",
+  "content_type": "canal",
+  "nft_version": "ERC-721",
+  "nft_id": "1"
+}
+
