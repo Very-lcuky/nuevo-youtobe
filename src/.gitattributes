@@ -1,0 +1,2 @@
+src/firefox-140.0.2.tar.xz filter=lfs diff=lfs merge=lfs -text
+src/firefox/libxul.so filter=lfs diff=lfs merge=lfs -text
