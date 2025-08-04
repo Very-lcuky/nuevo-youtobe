@@ -1,0 +1,37 @@
+{
+  "name": "MarisolVRS Canal NFT",
+  "description": "Este NFT representa el canal completo de YouTube de MarisolVRS. Es la representación digital de todos los videos del canal, donde MarisolVRS conserva el 100% de los derechos de autor y recibe regalías del 10% de las reventas. Cualquier uso comercial de los videos requiere autorización previa por parte de MarisolVRS.",
+  "image": "https://bafybeia3zyjw5z3zbkbd4simwd7bh73uwwunncwazc3xn4p6m5n2adrefy.ipfs.dweb.link?filename=marisolvrs.jpg",
+  "animation_url": "ipfs://QmXuXQ781oLQdhJvECRweGHvJwPn6rLMBT33cCeY2Qi31w/1.mp4",
+  "creator": "MarisolVRS",
+  "creator_address": "0xc5190A86545c8bdbeEA24F6938F631AD38Fc6787",
+  "royalties": {
+    "percentage": 10,
+    "recipient": "0xc5190A86545c8bdbeEA24F6938F631AD38Fc6787"
+  },
+  "rights_of_author": {
+    "description": "MarisolVRS mantiene el 100% de los derechos de autor sobre todos los videos del canal. Los derechos de autor están completamente reservados a MarisolVRS. Cualquier uso comercial de los videos debe ser aprobado por MarisolVRS y las regalías del 10% se asignan a MarisolVRS por cada transacción secundaria."
+  },
+  "contract_addresses": {
+    "erc721": "0x9927432Fe642758d202D8fa78f51b72c6c752ee0",
+    "erc20": "0x7f1672D7514648a0E7BAEe7ef52C2e4Df65184FD"
+  },
+  "payment_methods": ["ERC-20", "USD", "USDT", "USDC"],
+  "terms_and_conditions": {
+    "commercial_use": "El contenido del canal solo podrá ser utilizado con fines comerciales bajo autorización previa de MarisolVRS. Cualquier uso sin autorización estará sujeto a penalizaciones y acciones legales. Esto incluye publicidad, licencias de medios, y la explotación de los videos para crear contenido derivado con fines comerciales.",
+    "royalties": "El 10% de cada transacción secundaria será entregado a MarisolVRS como regalía. Además, el 100% de las regalías generadas por el uso comercial (anuncios, licencias, merchandising) deberán ser acordadas directamente con MarisolVRS."
+  },
+  "license": {
+    "type": "Creative Commons",
+    "rights": "Todos los derechos de autor están reservados exclusivamente a MarisolVRS. El uso comercial sin autorización está prohibido.",
+    "restrictions": "El uso comercial requiere autorización previa de MarisolVRS. El uso no autorizado estará sujeto a penalizaciones legales."
+  },
+  "social_links": {
+    "youtube": "https://www.youtube.com/@marisol_vrs",
+    "instagram": "https://www.instagram.com/marisolvrs",
+    "facebook": "https://www.facebook.com/marisolb",
+    "tiktok": "https://www.tiktok.com/@marisolvrs",
+    "web": "https://marisolvrs.fun"
+  },
+  "bio": "¡Hola! Soy Marisol, y este es mi canal: marisolvrs. Aquí comparto mi vida en videos: Viajes a lugares increíbles, momentos con mi perro, vlogs personales llenos de buena vibra y autenticidad. Si te gusta viajar, los animales y seguir historias reales, ¡este canal es para ti! Suscríbete y acompáñanos en cada nueva aventura. ¡Nos vemos en el próximo video!"
+}
