@@ -27,8 +27,25 @@ except InvalidAddress as e:
     print("⚠️ Dirección no válida:", e)
     exit()
 
-with open("erc721_abi.json") as f:
-    erc721_abi = json.load(f)
+def load_remote_json(url):
+    try:
+        response = requests.get(url)
+        response.raise_for_status()
+        return response.json()
+    except Exception as e:
+        print(f"❌ Error al cargar JSON desde {url}: {e}")
+        return None
+
+# URLs crudas de GitHub para los ABIs
+erc721_abi_url = "https://raw.githubusercontent.com/Very-lcuky/nuevo-youtobe/main/scrips/erc721_abi.json"
+erc20_abi_url = "https://raw.githubusercontent.com/Very-lcuky/nuevo-youtobe/main/scrips/erc20_abi.json"
+
+erc721_abi = load_remote_json(erc721_abi_url)
+erc20_abi = load_remote_json(erc20_abi_url)
+
+if not erc721_abi or not erc20_abi:
+    print("⚠️ No se pudieron cargar los ABIs, abortando.")
+    exit()
 
 erc721_contract = w3.eth.contract(address=erc721_address, abi=erc721_abi)
 
